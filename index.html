@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      align-items: center;
+      margin-top: 50px;
+    }
+    h1 {
+      color: gray;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 300px;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 10px;
+    }
+    th {
+      background: green;
+      color: white;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button:hover {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contacts Database</h1>
+  <table>
+    <tr><th>Slot #</th><th>Name</th></tr>
+    <tr><td>0</td><td>Arnold</td></tr>
+    <tr><td>1</td><td>Sly</td></tr>
+    <tr><td>2</td><td>Dwayne</td></tr>
+    <tr><td>3</td><td>Vin</td></tr>
+    <tr><td>4</td><td>JCVD</td></tr>
+    <tr><td>5</td><td>Steven</td></tr>
+  </table>
+  <button onclick="searchContact()">Find Contact</button>
+
+  <script>
+    const contacts = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"];
+
+    function searchContact() {
+      let continueSearch = true;
+
+      while (continueSearch) {
+        let slot = prompt("Enter the slot number (0–5) to view the contact:");
+        if (slot === null) return;
+        slot = parseInt(slot);
+
+        if (slot >= 0 && slot < contacts.length) {
+          alert("You selected " + contacts[slot]);
+        } else {
+          alert("That slot has not been found. Please try again.");
+          continue;
+        }
+
+        let again = prompt("Would you like to search for another contact? (yes or no)");
+        if (!again || again.toLowerCase() !== "yes") {
+          continueSearch = false;
+          alert("Goodbye!");
+        }
+      }
+    }
+  </script>
+</body>
+</html>
